@@ -1,0 +1,25 @@
+<app-add-user (userAdded)="handleUserAdded($event)"></app-add-user>
+<div class="mt-3">
+    <ng-container *ngIf="userNames && userNames.length > 0; else noUsersTemplate">
+        <h4>Users</h4>
+        <app-user *ngFor="let user of userNames; let i = index" [userName]="user"
+            (userRemoved)="handleRemoveUser($event, i)"></app-user>
+    </ng-container>
+    <ng-template #noUsersTemplate>
+            <p>No users added yet.</p>
+        </ng-template>
+</div>
+
+<!-- 
+<div *ngFor="let user of userNames">
+    <h5 *ngIf="user; else suggestionTemplate" [innerHtml]="user"></h5>
+</div> -->
+
+
+<!-- <ng-container *ngTemplateOutlet="suggestionTemplate"></ng-container>
+<ng-template #insertNameThenSubmit>
+    <p [style]="{'background-color':'red'}">Please input your name and submit</p>
+</ng-template>
+<ng-template #insertName>
+    <p [class]="{suggest:false}">Please input your name</p>
+</ng-template> -->
