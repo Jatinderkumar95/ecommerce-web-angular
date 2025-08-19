@@ -1,16 +1,27 @@
-<!-- <div mat-dialog-content>
-  <p appHighlightText>Welcome to the login modal!</p>
-    <form>
-        <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Enter your email" type="email" required>
-        </mat-form-field>
-        <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input matInput placeholder="Enter your password" type="password" required>
-        </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Login</button>
-    </form>
-</div> -->
+<div mat-dialog-content class="login-modal-container form-container">
+  <h2 class="login-modal-title">Login In</h2>
+  <form class="login-modal-form" #formLogin="ngForm" (ngSubmit)="handleLogin(formLogin)">
+    <mat-form-field appearance="outline" class="login-modal-form-field form-group">
+      <mat-label class="form-label" for="email">Email</mat-label>
+      <input matInput name="email" class="form-control" placeholder="Enter your email" type="email" required autocomplete="email" ngModel>
+      <mat-icon matPrefix>mail</mat-icon>
+      <mat-hint>We'll never share your email.</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="login-modal-form-field">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Enter your password" type="password" required autocomplete="current-password"
+      ngModel name="password">
+      <mat-icon matPrefix>lock</mat-icon>
+      <button mat-icon-button matSuffix type="button" tabindex="-1" aria-label="Show/hide password">
+        <mat-icon>visibility</mat-icon>
+      </button>
+      <mat-hint>Use 8 or more characters.</mat-hint>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" class="login-modal-btn">Login</button>
+    <div class="login-modal-forgot">
+      <a href="#" class="login-modal-forgot-link">Forgot password?</a>
+    </div>
+  </form>
+</div>
   
 

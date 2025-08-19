@@ -1,0 +1,31 @@
+<div class="signup-container">
+  <div class="signup-card">
+    <h2 class="signup-title">Create Account</h2>
+    <form (ngSubmit)="handleSignup()" [formGroup]="signupForm" class="signup-form">
+      <div class="signup-form-group">
+        <label for="email" class="signup-label">Email</label>
+        <div class="signup-input-wrapper">
+          <span class="signup-icon material-icons">mail</span>
+          <input type="email" class="signup-input" id="email" placeholder="Enter your email" autocomplete="email" formControlName="emailaddress">
+        </div>
+        <div class="signup-help-text" *ngIf="signupForm.get('emailaddress')!.touched && !signupForm.get('emailaddress')!.valid">
+          Email required
+        </div>
+      </div>
+      <div class="signup-form-group">
+        <label for="password" class="signup-label">Password</label>
+        <div class="signup-input-wrapper">
+          <span class="signup-icon material-icons">lock</span>
+          <input type="password" class="signup-input" id="password" placeholder="Enter your password" formControlName="password">
+        </div>
+        <div class="signup-help-text" *ngIf="signupForm.get('password')!.touched && !signupForm.get('password')!.valid">
+          Password required
+        </div>
+      </div>
+      <div class="signup-error" *ngIf="apiError">
+        {{apiError}}
+      </div>
+      <button class="signup-btn" type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+/* Login Modal Styles extracted from HTML */
+.login-modal-container {
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+ 
+    
+}
+
+.login-modal-title {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #3f51b5;
+}
+
+.login-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-modal-form-field {
+  width: 100%;
+}
+
+.login-modal-btn {
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(63,81,181,0.12);
+}
+
+.login-modal-forgot {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.login-modal-forgot-link {
+  color: #3f51b5;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

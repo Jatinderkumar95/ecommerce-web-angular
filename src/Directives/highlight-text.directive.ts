@@ -1,34 +1,32 @@
-import { Directive, ElementRef, OnInit } from "@angular/core";
+import { AfterContentInit, AfterViewInit, Directive, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges } from "@angular/core";
 
 
 @Directive({
-    selector: "[appHighlightText]",
+    selector: "[appHighlightText],appHighlight-text",
     standalone: true
 })
-export class HighlightTextDirective implements OnInit {
-    constructor(private el: ElementRef) {
+export class HighlightTextDirective implements OnChanges,AfterContentInit {
+    @Input() highlightText!: string;
+    constructor(private el: ElementRef, private renderer: Renderer2) { }
 
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log("Changes detected:", changes);
+        if (changes['highlightText']) {
+            this.highLight();
+        }
     }
-    ngOnInit(): void {
-        (this.el.nativeElement as HTMLElement).style.backgroundColor = "yellow";
+    // ngAfterViewInit(): void {
+    //     console.log(this.el.nativeElement.textContent);
+    // }
+    ngAfterContentInit():void{
+        this.highLight();
     }
-
-
-
-    // @Input() highlightText: string;
-
-    // constructor(private el: ElementRef, private renderer: Renderer2) {}
-
-    // ngOnChanges() {
-    //     this.highlight();
-    // }
-
-    // private highlight() {
-    //     const text = this.el.nativeElement.textContent;
-    //     if (this.highlightText && text.includes(this.highlightText)) {
-    //     const regex = new RegExp(`(${this.highlightText})`, 'gi');
-    //     const newText = text.replace(regex, `<span class="highlighted">$1</span>`);
-    //     this.renderer.setProperty(this.el.nativeElement, 'innerHTML', newText);
-    //     }
-    // }
+    private highLight() {
+        const text = this.el.nativeElement.textContent;
+        if (this.highlightText && text.includes(this.highlightText)) {
+            const regex = new RegExp(`(${this.highlightText})`, 'gi');
+            const newText = text.replace(regex, `<span class="highlighted">$1</span>`);
+            this.renderer.setProperty(this.el.nativeElement, 'innerHTML', newText);
+        }
+    }
 }
